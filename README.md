@@ -17,7 +17,7 @@
 - Login /Sign up
   - Sign in / sign up form
   - redirect to browse page on authentication
-- Browse
+- Browse (after authentication)
   - Header
   - Main movie
     - trailer in background
@@ -27,3 +27,15 @@
 - Netflix gpt
   - search bar
   - movie suggestion
+
+## Project directory structure
+
+- Public - all public files
+- src
+  - components - all components
+  - utils - for utility functions
+
+## Setting up routing
+
+- npm install -D react-router-dom
+- createBrowserRouter and RouterProvider
