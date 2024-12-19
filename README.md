@@ -10,7 +10,34 @@
 - npx tailwindcss init
 - Configure your template paths in tailwind.config.js
 - Add the Tailwind directives to your CSS @tailwind directives to app.css
-- start build process
+- Routing of app
+- Header
+- Login form
+- Sign up form
+- form validation
+- useRef hook
+
+## Setup firebase authentication
+
+- firebase setup
+- deploying app to production
+- firebase authentication
+- create sign up user account using signupuser api
+- write firebase sign up and sign in logic
+
+## Install Redux toolkit and redux react
+
+- npm install -D @reduxjs/toolkit
+- npm install react-redux
+- create redux store - appStore and add reducer (user: userReducer)
+- create user slice and export reducer and actions
+- add provider to the App and provide the store as appStore
+
+- dispatch action on sign in or sign up, update profile, sign out
+- logic for dispatch should be written at the central level hence in the body.js or app.js
+- use onAuthChange api of firebase to dispatch on state change
+
+## build browse page
 
 ## Features:
 

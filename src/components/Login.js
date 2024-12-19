@@ -1,9 +1,92 @@
-import React from "react";
+import React, { useRef } from "react";
 import Header from "./Header";
 import { useState } from "react";
+import { checkValidData } from "../utils/validate";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  updateProfile,
+} from "firebase/auth";
+import { auth } from "../utils/firebase";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addUser } from "../utils/userSlice";
 
 const Login = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [isSignInForm, setIsSignInForm] = useState(true);
+  const [errorMessage, setErrorMessage] = useState(null);
+
+  const email = useRef(null);
+  const password = useRef(null);
+  const fullname = useRef(null);
+
+  const handleButtonClick = () => {
+    // validate form data
+    const message = checkValidData(email.current.value, password.current.value);
+    setErrorMessage(message);
+    if (message) return;
+
+    //sign up logic
+
+    if (!isSignInForm) {
+      createUserWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          const user = userCredential.user;
+
+          // update user profile once signed in
+          updateProfile(user, {
+            displayName: fullname.current.value,
+            photoURL: "https://avatars.githubusercontent.com/u/34453509?v=4",
+          })
+            .then(() => {
+              // Profile updated! then navigate to browse page
+              const { uid, email, displayName, photoURL } = auth.currentUser;
+              dispatch(
+                addUser({
+                  uid: uid,
+                  email: email,
+                  displayName: displayName,
+                  photoURL: photoURL,
+                })
+              );
+              navigate("/browse");
+            })
+            .catch((error) => {
+              setErrorMessage(error.message);
+            });
+          console.log(user);
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+
+          setErrorMessage(errorCode + "-" + errorMessage);
+        });
+    } else {
+      signInWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+          console.log(user);
+          navigate("/browse");
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMessage(errorCode + "-" + errorMessage);
+        });
+    }
+  };
 
   const toggleSignInForm = () => {
     setIsSignInForm(!isSignInForm);
@@ -19,28 +102,36 @@ https://assets.nflxext.com/ffe/siteui/vlv3/f272782d-cf96-4988-a675-6db2afd165e0/
           alt="background"
         />
       </div>
-      <form className="bg-black bg-opacity-70 absolute w-3/12 mx-auto right-0 left-0 mt-28 h-[450px] rounded-lg">
+      <form
+        onSubmit={(e) => e.preventDefault()}
+        className="bg-black bg-opacity-70 absolute w-3/12 mx-auto right-0 left-0 mt-28 h-[450px] rounded-lg">
         <h1 className="font-bold text-left text-white text-3xl ml-3 mt-9 mb-7">
           {isSignInForm ? "Sign In" : "Sign Up"}
         </h1>
         {!isSignInForm && (
           <input
+            ref={fullname}
             type="text"
             placeholder="Full Name"
-            className="p-4 ml-3 my-2 w-11/12 h-12 bg-slate-700 bg-opacity-50 border border-white rounded-lg"
+            className="p-4 ml-3 my-2 w-11/12 h-12 bg-slate-700 bg-opacity-50 border border-white rounded-lg text-white"
           />
         )}
         <input
+          ref={email}
           type="text"
           placeholder="Email Address"
-          className="p-4 ml-3 my-2 w-11/12 h-12 bg-slate-700 bg-opacity-50 border border-white rounded-lg"
+          className="p-4 ml-3 my-2 w-11/12 h-12 bg-slate-700 bg-opacity-50 border border-white rounded-lg text-white"
         />
         <input
-          type="text"
+          ref={password}
+          type="password"
           placeholder="Password"
-          className="p-4 mx-3 my-2 w-11/12 h-12  bg-slate-700 bg-opacity-50 border border-white rounded-lg"
+          className="p-4 mx-3 my-2 w-11/12 h-12  bg-slate-700 bg-opacity-50 border border-white rounded-lg text-white"
         />
-        <button className="px-2 mx-3 my-2 w-11/12 h-12 bg-red-600 text-white rounded-lg">
+        <p className="px-4 text-red-600 font-bold">{errorMessage}</p>
+        <button
+          className="px-2 mx-3 my-8 w-11/12 h-12 bg-red-600 text-white rounded-lg"
+          onClick={handleButtonClick}>
           {isSignInForm ? "Sign In" : "Sign Up"}
         </button>
         <p
