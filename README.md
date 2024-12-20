@@ -36,8 +36,34 @@
 - dispatch action on sign in or sign up, update profile, sign out
 - logic for dispatch should be written at the central level hence in the body.js or app.js
 - use onAuthChange api of firebase to dispatch on state change
+- use constants file for hard code values
+
+## Bug fix
+
+- Sign up user displayName and photoURL
+- If the user is not loggedin redirect to Login page and vice-versa
+- unsubscribe onAuthStatechange callback
 
 ## build browse page
+
+- fetch the movies from TMDB
+- created a custom hook for fetching movies and dispatching them in store
+- features in browse page:
+
+  - Main container
+    - video background
+    - video title
+  - secondary container
+    - movie list \* n
+      - cards \* n
+
+## Main container
+
+- create Movie title, movie background component
+- add trailer video to movies slice
+- create custom hook to fetch trailer
+- update store with trailer data
+- use youtube embed code for displaying trailer and make it autoplay and mute
 
 ## Features:
 

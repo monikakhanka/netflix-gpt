@@ -9,7 +9,6 @@ const RefDemo = () => {
         className="bg-red-300 w-auto p-4"
         onClick={() => {
           x = x + 1;
-          console.log(x);
         }}>
         Click me
       </button>

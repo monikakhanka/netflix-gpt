@@ -11,6 +11,7 @@ import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
+import { USER_LOGO, BACKGROUND_IMG } from "../utils/constants";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -42,7 +43,7 @@ const Login = () => {
           // update user profile once signed in
           updateProfile(user, {
             displayName: fullname.current.value,
-            photoURL: "https://avatars.githubusercontent.com/u/34453509?v=4",
+            photoURL: USER_LOGO,
           })
             .then(() => {
               // Profile updated! then navigate to browse page
@@ -60,7 +61,6 @@ const Login = () => {
             .catch((error) => {
               setErrorMessage(error.message);
             });
-          console.log(user);
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -78,7 +78,6 @@ const Login = () => {
           // Signed in
           const user = userCredential.user;
           console.log(user);
-          navigate("/browse");
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -96,11 +95,7 @@ const Login = () => {
     <div>
       <Header />
       <div className="absolute">
-        <img
-          src="
-https://assets.nflxext.com/ffe/siteui/vlv3/f272782d-cf96-4988-a675-6db2afd165e0/web/IN-en-20241008-TRIFECTA-perspective_b28b640f-cee0-426b-ac3a-7c000d3b41b7_small.jpg"
-          alt="background"
-        />
+        <img src={BACKGROUND_IMG} alt="background" />
       </div>
       <form
         onSubmit={(e) => e.preventDefault()}
