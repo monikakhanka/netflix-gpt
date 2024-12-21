@@ -65,6 +65,10 @@
 - update store with trailer data
 - use youtube embed code for displaying trailer and make it autoplay and mute
 
+## Secondary container
+
+- Movie list component
+
 ## Features:
 
 - Login /Sign up
