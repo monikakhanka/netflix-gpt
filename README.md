@@ -68,6 +68,17 @@
 ## Secondary container
 
 - Movie list component
+- usePupularMovies, useUpcomingMovies, useNowPlayingMovies
+- created browse page
+
+## GPT Search feature
+
+- button to toggle between gptSearch page and main browser
+- gpt store to store the toggle value and useSelector to access this variable
+- gpt Search bar
+- gpt Search suggestions
+- multilanguage feature
+- GPT api integration
 
 ## Features:
 
