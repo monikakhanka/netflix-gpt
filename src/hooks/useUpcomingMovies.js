@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addUpcomingMovies } from "../utils/moviesSlice";
 import { API_OPTIONS } from "../utils/constants";
 import { useEffect } from "react";
@@ -8,6 +8,8 @@ const useUpcomingMovies = () => {
   const options = API_OPTIONS;
   const url = "https://api.themoviedb.org/3/movie/upcoming";
 
+  const upcomingMovies = useSelector((store) => store.movies.nowPlayingMovies);
+
   const getUpcomingMovies = async () => {
     const data = await fetch(url, options);
     const json = await data.json();
@@ -15,7 +17,9 @@ const useUpcomingMovies = () => {
     dispatch(addUpcomingMovies(json.results));
   };
   useEffect(() => {
-    getUpcomingMovies();
+    // memoization for upcoming movies
+    // if store already have them no api call is made
+    upcomingMovies && getUpcomingMovies();
   }, []);
 };
 
