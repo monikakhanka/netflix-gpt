@@ -1,6 +1,6 @@
 # Netflix clone
 
-A fully functional Netflix-like application that provides users with a seamless movie streaming experience. The app integrates Firebase for user authentication, uses the TMDB API for fetching movie data, leverages Redux for state management, and incorporates GPT to provide personalized movie suggestions.
+Frontend for Netflix-like application that provides users with a movie suggestions. The app integrates Firebase for user authentication, uses the TMDB API for fetching movie data, leverages Redux for state management, and incorporates GPT to provide personalized movie suggestions.
 
 # Features:
 
