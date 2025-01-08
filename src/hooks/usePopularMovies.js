@@ -7,7 +7,7 @@ const usePopularMovies = () => {
   const dispatch = useDispatch();
   const options = API_OPTIONS;
 
-  const popularMovies = useSelector((store) => store.movies.nowPlayingMovies);
+  const popularMovies = useSelector((store) => store.movies.popularMovies);
   const url = "https://api.themoviedb.org/3/movie/popular";
 
   const getPopularMovies = async () => {

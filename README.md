@@ -1,109 +1,127 @@
-## Creating React app using CRA
+# Netflix clone
 
-- npx create-react-app netflix-gpt
+A fully functional Netflix-like application that provides users with a seamless movie streaming experience. The app integrates Firebase for user authentication, uses the TMDB API for fetching movie data, leverages Redux for state management, and incorporates GPT to provide personalized movie suggestions.
 
-## Setup tailwind
+# Features:
 
-- npx create-react-app my-project
-- cd my-project
-- npm install -D tailwindcss
-- npx tailwindcss init
-- Configure your template paths in tailwind.config.js
-- Add the Tailwind directives to your CSS @tailwind directives to app.css
-- Routing of app
-- Header
-- Login form
-- Sign up form
-- form validation
-- useRef hook
+## User Authentication
 
-## Setup firebase authentication
+- Registration and login : Secure user authentication using firebase
 
-- firebase setup
-- deploying app to production
-- firebase authentication
-- create sign up user account using signupuser api
-- write firebase sign up and sign in logic
+## TMDB API integration
 
-## Install Redux toolkit and redux react
+- Fetches data for popular, upcoming, trending etc., movies content
 
-- npm install -D @reduxjs/toolkit
-- npm install react-redux
-- create redux store - appStore and add reducer (user: userReducer)
-- create user slice and export reducer and actions
-- add provider to the App and provide the store as appStore
+## GPT integration
 
-- dispatch action on sign in or sign up, update profile, sign out
-- logic for dispatch should be written at the central level hence in the body.js or app.js
-- use onAuthChange api of firebase to dispatch on state change
-- use constants file for hard code values
+- Integrated with GPT to offer tailored movie recommendations based on user preferences.
 
-## Bug fix
+## State management using Redux
 
-- Sign up user displayName and photoURL
-- If the user is not loggedin redirect to Login page and vice-versa
-- unsubscribe onAuthStatechange callback
+- Efficient state management for: Fetching datafrom TMDB
 
-## build browse page
+## Intuitive UI
 
-- fetch the movies from TMDB
-- created a custom hook for fetching movies and dispatching them in store
-- features in browse page:
+- User interface inspired by netflix
+- Features a responsive layout for both desktop and mobile screens.
 
-  - Main container
-    - video background
-    - video title
-  - secondary container
-    - movie list \* n
-      - cards \* n
+# Screenshots
 
-## Main container
+## For Web
 
-- create Movie title, movie background component
-- add trailer video to movies slice
-- create custom hook to fetch trailer
-- update store with trailer data
-- use youtube embed code for displaying trailer and make it autoplay and mute
+- Sign up Page
+  ![Signup Page](netflix-img/SignupPage.png)
 
-## Secondary container
+- Login Page
+  ![Login Page](netflix-img/SigninPage.png)
 
-- Movie list component
-- usePupularMovies, useUpcomingMovies, useNowPlayingMovies
-- created browse page
+- Main Page
+  ![Main Movies page](netflix-img/MainPage.png)
 
-## GPT Search feature
+- GPT Search Page
+  ![GPT Search Page](netflix-img/GptSearchPage.png)
+  ![GPT Search Page](netflix-img/GptSearchPage2.png)
+- Movie cards:
+  ![GPT Search Page](netflix-img/MovieCards.png)
 
-- button to toggle between gptSearch page and main browser
-- gpt store to store the toggle value and useSelector to access this variable
-- gpt Search bar
-- gpt Search suggestions
-- multilanguage feature
-- GPT api integration
+## For Mobile:
 
-## Features:
+Sign up Page
 
-- Login /Sign up
-  - Sign in / sign up form
-  - redirect to browse page on authentication
-- Browse (after authentication)
-  - Header
-  - Main movie
-    - trailer in background
-    - title and description
-    - movie suggestion
-      - movieLists \* n
-- Netflix gpt
-  - search bar
-  - movie suggestion
+- ![Signup Page](netflix-img/Mobile-SignUpPage.png)
 
-## Project directory structure
+- Login Page
+  ![Login Page](netflix-img/Mobile-SignInPage.png)
 
-- Public - all public files
-- src
-  - components - all components
-  - utils - for utility functions
+- Main Page
+  ![Main Movies page](netflix-img/Mobile-MainPage.png)
 
-## Setting up routing
+- GPT Search Page
+  ![GPT Search Page](netflix-img/Mobile-GptSearchPage.png)
 
-- npm install -D react-router-dom
-- createBrowserRouter and RouterProvider
+# Technologies used:
+
+List of tools, libraries and frameworks used in the project
+
+- Frontend: React, Redux, Tailwind CSS
+- Backend: Firebase
+- API: TMDB, ChatGPT
+- Deployment: Render
+
+## Frontend:
+
+- React: Component based architecture for building the user interface
+- Redux: For managing and synchronising application state
+- Tailwind CSS : For styling and ensuring responsive layout
+
+## Backend:
+
+- Firebase: User authentication for secure sign-in and registration
+
+## API Integration:
+
+- TMDB API: Fetches movies data
+- GPT API: Offers personalized movie recommendations based on inputs from user
+
+# Installation
+
+1. Clone the repository
+   git clone https://github.com/monikakhanka/netflix-gpt.git
+2. Navigate to the project directory
+   cd netflix-gpt
+3. Install dependencies
+   npm install
+4. create .env file with following environment variable and copy the keys from your account:
+   REACT_APP_TMDB_KEY=ahjhjskjksj
+   EACT_APP_OPENAI_KEY=ankkajkjakja
+5. Start the development server
+   npm start dev
+
+## How it works
+
+Steps to use the app:
+
+1. Sign up:
+
+- Create a profile by entering Name, Email Id and Password.
+- On successful sign up, main page opens up.
+
+2. Log in:
+
+- If the user already exist, then login using Email Id and Password.
+- On successful log user is directed to main page
+
+3. Main page:
+
+- Displays one movie trailer in background and discription related to it
+- Displays movie cards based on different categories: Most popular, Now playing, trending, horror etc.
+
+3. GPT Search:
+
+- On clicking GPT search button on the top, the search page opens up
+- Enter the prompt for movie for eg. Old thriller romantic movie
+- The movie cards based on the suggestions are displayed on the page
+
+4. Logout:
+
+- For logging out the user

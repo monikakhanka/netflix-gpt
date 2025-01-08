@@ -94,12 +94,16 @@ const Login = () => {
     <div>
       <Header />
       <div className="absolute">
-        <img src={BACKGROUND_IMG} alt="background" />
+        <img
+          className="h-screen object-cover w-screen"
+          src={BACKGROUND_IMG}
+          alt="background"
+        />
       </div>
       <form
         onSubmit={(e) => e.preventDefault()}
-        className="bg-black bg-opacity-70 absolute w-3/12 mx-auto right-0 left-0 mt-28 h-[450px] rounded-lg">
-        <h1 className="font-bold text-left text-white text-3xl ml-3 mt-9 mb-7">
+        className="bg-black bg-opacity-70 absolute w-full md:w-3/12 md:mx-auto right-0 left-0 mt-[55%] md:mt-24 h-[450px] rounded-lg">
+        <h1 className="font-bold text-left text-white text-3xl mt-9 mb-7 flex justify-center">
           {isSignInForm ? "Sign In" : "Sign Up"}
         </h1>
         {!isSignInForm && (
@@ -124,12 +128,12 @@ const Login = () => {
         />
         <p className="px-4 text-red-600 font-bold">{errorMessage}</p>
         <button
-          className="px-2 mx-3 my-8 w-11/12 h-12 bg-red-600 text-white rounded-lg"
+          className="px-2 mx-3 mt-8 mb-5 w-11/12 h-12 bg-red-600 text-white rounded-lg"
           onClick={handleButtonClick}>
           {isSignInForm ? "Sign In" : "Sign Up"}
         </button>
         <p
-          className="text-white py-4 mx-3 font-normal cursor-pointer"
+          className="text-white py-4 mx-3 my-0 font-normal cursor-pointer"
           onClick={toggleSignInForm}>
           {isSignInForm
             ? "New to Netflix? Sign Up now"
