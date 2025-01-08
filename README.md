@@ -46,9 +46,8 @@ Frontend for Netflix-like application that provides users with a movie suggestio
 
 ## For Mobile:
 
-Sign up Page
-
-- ![Signup Page](netflix-img/Mobile-SignUpPage.png)
+- Sign up Page
+  ![Signup Page](netflix-img/Mobile-SignUpPage.png)
 
 - Login Page
   ![Login Page](netflix-img/Mobile-SignInPage.png)
