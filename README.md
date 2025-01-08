@@ -2,6 +2,10 @@
 
 Frontend for Netflix-like application that provides users with a movie suggestions. The app integrates Firebase for user authentication, uses the TMDB API for fetching movie data, leverages Redux for state management, and incorporates GPT to provide personalized movie suggestions.
 
+# Web App link:
+
+https://netflix-gpt-zcdh.onrender.com
+
 # Features:
 
 ## User Authentication
