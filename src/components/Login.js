@@ -120,6 +120,12 @@ const Login = () => {
           placeholder="Email Address"
           className="p-4 ml-3 my-2 w-11/12 h-12 bg-slate-700 bg-opacity-50 border border-white rounded-lg text-white"
         />
+        {!isSignInForm && (
+          <p className="text-white text-xs mx-3 mt-2">
+            Password must contain: Atleast 4 letters, an uppercase, a lowercase,
+            a number, a special character
+          </p>
+        )}
         <input
           ref={password}
           type="password"
